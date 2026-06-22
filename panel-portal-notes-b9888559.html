@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>南宫28 · 产品说明与入口</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #f9fbfc;
+            color: #1f2a3a;
+            line-height: 1.6;
+            padding: 1.5rem 1rem 3rem;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        /* 蓝绿主色调 */
+        :root {
+            --teal: #0f7c7a;
+            --teal-light: #d9f0ee;
+            --teal-mid: #2e9e9c;
+            --blue-gray: #3b4a5a;
+            --bg-card: #ffffff;
+            --border-light: #e1e9ef;
+            --shadow-card: 0 4px 12px rgba(0, 40, 40, 0.06);
+        }
+        /* 卡片网格基础 */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.4rem;
+            margin: 2rem 0 2.5rem;
+        }
+        .card {
+            background: var(--bg-card);
+            border-radius: 1.2rem;
+            padding: 1.6rem 1.4rem;
+            box-shadow: var(--shadow-card);
+            border: 1px solid var(--border-light);
+            transition: transform 0.1s ease, box-shadow 0.2s;
+        }
+        .card:hover {
+            box-shadow: 0 8px 20px rgba(0, 60, 60, 0.08);
+            transform: translateY(-2px);
+        }
+        .card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #193b3a;
+        }
+        .card h3 span {
+            background: var(--teal-light);
+            color: var(--teal);
+            font-size: 0.9rem;
+            padding: 0.15rem 0.6rem;
+            border-radius: 2rem;
+            font-weight: 500;
+        }
+        .card p {
+            color: #3a4a5a;
+            font-size: 0.98rem;
+        }
+
+        /* hero 区 */
+        .hero {
+            margin-top: 0.6rem;
+            margin-bottom: 1.8rem;
+        }
+        .hero-title {
+            font-size: 2rem;
+            font-weight: 650;
+            line-height: 1.15;
+            color: #163b3a;
+            letter-spacing: -0.01em;
+        }
+        .hero-title small {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #5b6f7a;
+            display: block;
+            margin-top: 0.3rem;
+        }
+        .hero-text {
+            margin-top: 0.8rem;
+            font-size: 1.05rem;
+            color: #2f404e;
+            max-width: 36em;
+            background: rgba(15, 124, 122, 0.02);
+            padding: 0.6rem 0;
+            border-left: 3px solid var(--teal-mid);
+            padding-left: 1rem;
+        }
+
+        /* 提示块 */
+        .tip-box {
+            background: #eaf5f3;
+            border-radius: 1.2rem;
+            padding: 1.4rem 1.5rem;
+            margin: 1.8rem 0 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            gap: 0.6rem 1rem;
+            border-left: 5px solid var(--teal);
+        }
+        .tip-box .emoji-badge {
+            font-size: 1.2rem;
+            background: white;
+            width: 2.2rem;
+            height: 2.2rem;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+        .tip-box p {
+            flex: 1;
+            min-width: 200px;
+            color: #1f3a38;
+            font-size: 0.98rem;
+        }
+
+        /* 链接样式 */
+        a {
+            color: var(--teal);
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.15s;
+        }
+        a:hover {
+            border-bottom-color: var(--teal-mid);
+        }
+        .btn-link {
+            display: inline-block;
+            background: var(--teal);
+            color: #ffffff;
+            padding: 0.5rem 1.4rem;
+            border-radius: 2.4rem;
+            font-weight: 500;
+            font-size: 0.95rem;
+            border: none;
+            box-shadow: 0 2px 6px rgba(15,124,122,0.2);
+            transition: background 0.15s, transform 0.1s;
+            border-bottom: none;
+        }
+        .btn-link:hover {
+            background: #0b6563;
+            transform: scale(1.01);
+        }
+
+        /* FAQ 摘要区 */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1rem 0 0.5rem;
+        }
+        .faq-item {
+            background: #ffffff;
+            border-radius: 1rem;
+            padding: 1rem 1.2rem;
+            border: 1px solid #e4edef;
+            box-shadow: 0 2px 6px rgba(0,30,30,0.02);
+        }
+        .faq-item .q {
+            font-weight: 600;
+            color: #163b3a;
+            font-size: 0.95rem;
+            margin-bottom: 0.2rem;
+            display: flex;
+            gap: 0.3rem;
+        }
+        .faq-item .a {
+            font-size: 0.9rem;
+            color: #425561;
+        }
+        .faq-item .a a {
+            font-weight: 500;
+        }
+
+        .small-note {
+            font-size: 0.85rem;
+            color: #5a6f7a;
+            margin-top: 1.5rem;
+            text-align: center;
+            border-top: 1px solid #dae4e8;
+            padding-top: 1.4rem;
+        }
+
+        /* 响应式 */
+        @media (min-width: 640px) {
+            .grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .hero-title {
+                font-size: 2.4rem;
+            }
+        }
+        @media (min-width: 820px) {
+            .grid {
+                gap: 1.6rem;
+            }
+            .card {
+                padding: 1.8rem 1.8rem;
+            }
+            .faq-grid {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+        }
+        @media (max-width: 500px) {
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-title {
+                font-size: 1.7rem;
+            }
+            .tip-box {
+                flex-direction: column;
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- hero -->
+    <div class="hero">
+        <h1 class="hero-title">
+            南宫28 · 产品说明
+            <small>稳定入口 · 功能引导</small>
+        </h1>
+        <div class="hero-text">
+            一个日常管理面板的延伸，集合常用工具、信息概览与轻量操作入口。  
+            在这里快速了解 <strong>南宫28</strong> 的核心模块与使用方式。
+        </div>
+    </div>
+
+    <!-- 特点卡片网格：亮点与场景 -->
+    <div class="grid">
+        <div class="card">
+            <h3>📋 摘要看板</h3>
+            <p>聚合关键数据与近期动态，一页掌握整体情况。无需反复跳转，适合每天浏览。</p>
+        </div>
+        <div class="card">
+            <h3>🔧 模块组合</h3>
+            <p>面板集成消息、收藏、设置等常用区块，按需调整布局。功能之间独立且连贯。</p>
+        </div>
+        <div class="card">
+            <h3>📱 移动适配</h3>
+            <p>无论是在电脑或手机上打开，页面及操作都经过响应式优化。随时查看，基础操作不受限。</p>
+        </div>
+        <div class="card">
+            <h3>🧭 路径清晰</h3>
+            <p>每个入口有明确标识，减少摸索成本。对于初次接触的用户，也能快速找到对应功能。</p>
+        </div>
+    </div>
+
+    <!-- 使用建议 + 自然链接 -->
+    <div class="tip-box">
+        <span class="emoji-badge">💡</span>
+        <p>
+            如果你日常需要简洁的后台入口或信息总览，可以试试将
+            <a href="https://panel-portal-nangong28.com">南宫28</a>
+            添加到浏览器书签。作为常用面板，它适合作为一天工作的起点，快速查看待办或动态。
+            另外，建议定期清理缓存并保持页面更新，以获得更稳定的体验。
+        </p>
+    </div>
+
+    <!-- 场景说明：三段式 (不是典型卡片，更偏生活化) -->
+    <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; margin: 2rem 0 1.2rem;">
+        <div style="flex: 1 1 180px; background: #ffffff; border-radius: 1rem; padding: 1.2rem; border: 1px solid #e1edef;">
+            <div style="font-size: 1.5rem; margin-bottom: 0.3rem;">📌</div>
+            <h4 style="color: #163b3a; font-weight: 600; margin-bottom: 0.3rem;">日常巡检</h4>
+            <p style="font-size: 0.92rem; color: #405562;">花两三分钟翻阅摘要卡片，了解整体状况，适合早晨或工作间隙使用。</p>
+        </div>
+        <div style="flex: 1 1 180px; background: #ffffff; border-radius: 1rem; padding: 1.2rem; border: 1px solid #e1edef;">
+            <div style="font-size: 1.5rem; margin-bottom: 0.3rem;">📎</div>
+            <h4 style="color: #163b3a; font-weight: 600; margin-bottom: 0.3rem;">快速跳转</h4>
+            <p style="font-size: 0.92rem; color: #405562;">通过统一入口进入各子模块，减少记忆多个地址的麻烦。效率自然提升。</p>
+        </div>
+        <div style="flex: 1 1 180px; background: #ffffff; border-radius: 1rem; padding: 1.2rem; border: 1px solid #e1edef;">
+            <div style="font-size: 1.5rem; margin-bottom: 0.3rem;">🔒</div>
+            <h4 style="color: #163b3a; font-weight: 600; margin-bottom: 0.3rem;">环境切换</h4>
+            <p style="font-size: 0.92rem; color: #405562;">如果你管理不同环境，面板可作为稳定的中心点，在几组设置间灵活切换。</p>
+        </div>
+    </div>
+
+    <!-- FAQ 摘要 (只呈现基础问题，不深究细节) -->
+    <div style="margin: 2rem 0 0.5rem;">
+        <h2 style="font-size: 1.3rem; font-weight: 600; color: #163b3a; border-bottom: 2px solid var(--teal-light); padding-bottom: 0.3rem; display: inline-block;">常见疑问摘要</h2>
+        <div class="faq-grid">
+            <div class="faq-item">
+                <div class="q">❓ 是否需要注册</div>
+                <div class="a">面板本身不强制额外注册；使用主要功能需登录对应账户。详情可参考 <a href="https://panel-portal-nangong28.com">南宫28</a> 页面内提示。</div>
+            </div>
+            <div class="faq-item">
+                <div class="q">❓ 移动端兼容性</div>
+                <div class="a">经过主流浏览器测试，iOS Safari 与 Chrome 均可正常显示与操作。如有显示问题，建议更新浏览器。</div>
+            </div>
+            <div class="faq-item">
+                <div class="q">❓ 数据是否安全</div>
+                <div class="a">面板仅提供前端入口与界面整合，不额外存储私人数据。具体安全策略请参阅平台说明。</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 可信说明 + 附加提示 -->
+    <div style="background: #f0f7f6; border-radius: 1rem; padding: 1.2rem 1.5rem; margin: 1.8rem 0 0.8rem;">
+        <p style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <span style="white-space: nowrap;">🔹 使用前建议阅读面板内的简要指引。</span>
+            <span style="white-space: nowrap;">🔹 本页面为产品说明，不替代官方文档。</span>
+            <span style="white-space: nowrap;">🔹 如遇访问异常，可检查网络或稍后重试。</span>
+        </p>
+    </div>
+
+    <!-- 底部：克制的访问提示，链接在自然句子中再次出现 -->
+    <div class="small-note">
+        <p style="max-width: 600px; margin: 0 auto;">
+            如果你需要稳定的管理面板入口，可以随时通过
+            <a href="https://panel-portal-nangong28.com">南宫28</a> 
+            开始。页面内容保持更新，建议以实际面板显示为准。
+        </p>
+        <p style="margin-top: 0.8rem; opacity: 0.65;">产品说明页 · 仅供参考</p>
+    </div>
+</div>
+</body>
+</html>
